@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estoque - Solução</title>
+    <link rel="icon" type="image/png" href="/pictures/image_5062fa.png">
+    
+    <link rel="stylesheet" href="stockStyle.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="/pictures/image_5062fa.png" alt="Logo Solução">
+                <div>
+                    <div class="logo-text">Solução</div>
+                    <div class="logo-subtitle">Equipamentos para Redes Elétricas</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="/main/order/order.html">Ordem de Produção</a>
+                <a href="/main/stock/stock.html">Estoque</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="product-row" data-product-id="martelo">
+            <div class="product-info">
+                <div class="product-icon">
+                    <img src="/pictures/martelo.png" alt="Martelo">
+                </div>
+                <div class="product-name">Martelo</div>
+            </div>
+            <div class="product-actions">
+                <input type="number" class="quantity-input" value="1" min="1">
+                <button class="action-btn btn-add" data-action="add" title="Adicionar ao estoque"></button>
+                <button class="action-btn btn-remove" data-action="remove" title="Remover do estoque"></button>
+                <div class="quantity-info">
+                    <span>QTD</span>
+                    <span class="quantity-value">10</span>
+                </div>
+                <button class="action-btn btn-delete" data-action="delete" title="Excluir produto">
+                    <img src="/pictures/trash.png" alt="Lixeira">
+                </button>
+            </div>
+        </div>
+           <div class="product-row" data-product-id="pregos">
+            <div class="product-info">
+                <div class="product-icon">
+                    <img src="/pictures/prego.png" alt="Pregos">
+                </div>
+                <div class="product-name">Pregos</div>
+            </div>
+            <div class="product-actions">
+                <input type="number" class="quantity-input" value="1" min="1">
+                <button class="action-btn btn-add" data-action="add" title="Adicionar ao estoque"></button>
+                <button class="action-btn btn-remove" data-action="remove" title="Remover do estoque"></button>
+                <div class="quantity-info">
+                    <span>QTD</span>
+                    <span class="quantity-value">10</span>
+                </div>
+                <button class="action-btn btn-delete" data-action="delete" title="Excluir produto">
+                    <img src="/pictures/trash.png" alt="Lixeira">
+                </button>
+            </div>
+        </div>
+
+        <div class="product-row" data-product-id="porcas">
+            <div class="product-info">
+                <div class="product-icon">
+                    <img src="/pictures/porca.png" alt="Porcas">
+                </div>
+                <div class="product-name">Porcas</div>
+            </div>
+            <div class="product-actions">
+                <input type="number" class="quantity-input" value="1" min="1">
+                <button class="action-btn btn-add" data-action="add" title="Adicionar ao estoque"></button>
+                <button class="action-btn btn-remove" data-action="remove" title="Remover do estoque"></button>
+                <div class="quantity-info">
+                    <span>QTD</span>
+                    <span class="quantity-value">10</span>
+                </div>
+                <button class="action-btn btn-delete" data-action="delete" title="Excluir produto">
+                    <img src="/pictures/trash.png" alt="Lixeira">
+                </button>
+            </div>
+        </div>
+
+        <div class="product-row" data-product-id="cabecote">
+            <div class="product-info">
+                <div class="product-icon">
+                    <img src="/pictures/cabecote.png" alt="Cabeçote de motor">
+                </div>
+                <div class="product-name">Cabeçote de motor</div>
+            </div>
+            <div class="product-actions">
+                <input type="number" class="quantity-input" value="1" min="1">
+                <button class="action-btn btn-add" data-action="add" title="Adicionar ao estoque"></button>
+                <button class="action-btn btn-remove" data-action="remove" title="Remover do estoque"></button>
+                <div class="quantity-info">
+                    <span>QTD</span>
+                    <span class="quantity-value">10</span>
+                </div>
+                <button class="action-btn btn-delete" data-action="delete" title="Excluir produto">
+                    <img src="/pictures/trash.png" alt="Lixeira">
+                </button>
+            </div>
+        </div>
+
+        <div class="product-row" data-product-id="cano">
+            <div class="product-info">
+                <div class="product-icon">
+                    <img src="/pictures/cano_metal.png" alt="Cano de metal">
+                </div>
+                <div class="product-name">Cano de metal</div>
+            </div>
+            <div class="product-actions">
+                <input type="number" class="quantity-input" value="1" min="1">
+                <button class="action-btn btn-add" data-action="add" title="Adicionar ao estoque"></button>
+                <button class="action-btn btn-remove" data-action="remove" title="Remover do estoque"></button>
+                <div class="quantity-info">
+                    <span>QTD</span>
+                    <span class="quantity-value">10</span>
+                </div>
+                <button class="action-btn btn-delete" data-action="delete" title="Excluir produto">
+                    <img src="/pictures/trash.png" alt="Lixeira">
+                </button>
+            </div>
+        </div>
+
+        <div class="product-row" data-product-id="fio-cobre">
+            <div class="product-info">
+                <div class="product-icon">
+                    <img src="/pictures/cobre.png" alt="Fio de Cobre">
+                </div>
+                <div class="product-name">Fio de Cobre</div>
+            </div>
+            <div class="product-actions">
+                <input type="number" class="quantity-input" value="1" min="1">
+                <button class="action-btn btn-add" data-action="add" title="Adicionar ao estoque"></button>
+                <button class="action-btn btn-remove" data-action="remove" title="Remover do estoque"></button>
+                <div class="quantity-info">
+                    <span>QTD</span>
+                    <span class="quantity-value">10</span>
+                </div>
+                <button class="action-btn btn-delete" data-action="delete" title="Excluir produto">
+                    <img src="/pictures/trash.png" alt="Lixeira">
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div class="add-product-dialog-overlay" id="add-product-dialog-overlay">
+        <div class="add-product-dialog">
+            <h2>Adicionar Novo Produto</h2>
+            <input type="text" id="new-product-name" placeholder="Nome do Produto">
+
+            <div class="file-input-wrapper">
+                <input type="file" id="product-image-upload" accept="image/*">
+                <label for="product-image-upload" class="custom-file-upload">Selecionar Imagem</label>
+                <div id="image-preview">
+                    <span>Pré-visualização da Imagem</span>
+                </div>
+            </div>
+
+            <input type="number" id="new-product-quantity" placeholder="Quantidade Inicial" min="0" value="0">
+
+            <div class="dialog-buttons">
+                <button class="add-btn" id="confirm-add-product">Adicionar</button>
+                <button class="cancel-btn" id="cancel-add-product">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="password-dialog-overlay" id="password-dialog-overlay">
+        <div class="password-dialog">
+            <h3>Senha de Administrador</h3>
+            <p>Para prosseguir, digite a senha de administrador:</p>
+            <input type="password" id="admin-password-input" placeholder="Senha">
+            <div class="dialog-buttons">
+                <button class="confirm-btn" id="confirm-password-btn">Confirmar</button>
+                <button class="cancel-btn" id="cancel-password-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="add-card-btn" id="add-card-btn">
+        <span class="plus-icon">+</span>
+    </button>
+
+    <script src="stockJS.js"></script>
+
+</body>
+</html>

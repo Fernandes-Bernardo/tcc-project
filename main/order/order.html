@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem de Produção</title>
+    <link rel="icon" type="image/png" href="/pictures/image_5062fa.png">
+
+    <link rel="stylesheet" href="orderStyle.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="/pictures/image_5062fa.png" alt="Logo Solução">
+                <div>
+                    <div class="logo-text">Solução</div>
+                    <div class="logo-subtitle">Equipamentos para Redes Elétricas</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="/main/order/order.html">Ordem de Produção</a>
+                <a href="/main/stock/stock.html">Estoque</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="table-header">
+            <div>Ordem de Produção</div>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+            <div class="product-card" data-card-id="construcao">
+                <div class="card-header"></div>
+                <ul class="product-list">
+                    <li>3x Sacos de cimento</li>
+                    <li>1x Pá</li>
+                    <li>1x Carrinho de mão</li>
+                    <li>20x Tijolos</li>
+                    <li>1x Balde de 20L</li>
+                </ul>
+                <button class="delete-card-btn" data-action="delete-card" title="Excluir conjunto">
+                    <img src="/pictures/trash.png" alt="Excluir">
+                </button>
+            </div>
+            <div class="product-card" data-card-id="pintura">
+                <div class="card-header"></div>
+                <ul class="product-list">
+                    <li>2x Latas de tinta 18L</li>
+                    <li>3x Rolos de pintura</li>
+                    <li>1x Bandeja de pintura</li>
+                    <li>1x Escada 5 degraus</li>
+                    <li>2x Lonas plásticas</li>
+                </ul>
+                <button class="delete-card-btn" data-action="delete-card" title="Excluir conjunto">
+                    <img src="/pictures/trash.png" alt="Excluir">
+                </button>
+            </div>
+            <div class="product-card" data-card-id="eletrico">
+                <div class="card-header"></div>
+                <ul class="product-list">
+                    <li>2x Rolo cabo CAT6</li>
+                    <li>16x Conectores RJ45</li>
+                    <li>1x Alicate de crimpagem</li>
+                    <li>1x Testador de cabo</li>
+                    <li>1x Roteador Wi-Fi</li>
+                </ul>
+                <button class="delete-card-btn" data-action="delete-card" title="Excluir conjunto">
+                    <img src="/pictures/trash.png" alt="Excluir">
+                </button>
+            </div>
+            <div class="product-card" data-card-id="ferramentas">
+                <div class="card-header"></div>
+                <ul class="product-list">
+                    <li>1x Chave Philips</li>
+                    <li>60x Parafusos</li>
+                    <li>2x Dobradiças</li>
+                    <li>1x Martelo de borracha</li>
+                    <li>4x Pés niveladores</li>
+                </ul>
+                <button class="delete-card-btn" data-action="delete-card" title="Excluir conjunto">
+                    <img src="/pictures/trash.png" alt="Excluir">
+                </button>
+            </div>
+            <div class="product-card" data-card-id="limpeza">
+                <div class="card-header"></div>
+                <ul class="product-list">
+                    <li>3x Rolo de fio 2,5mm</li>
+                    <li>50x Conectores</li>
+                    <li>1x Quadro de distribuição</li>
+                    <li>20x Caixas 4x2</li>
+                    <li>1x Multímetro</li>
+                </ul>
+                <button class="delete-card-btn" data-action="delete-card" title="Excluir conjunto">
+                    <img src="/pictures/trash.png" alt="Excluir">
+                </button>
+            </div>
+            <div class="product-card" data-card-id="diversos">
+                <div class="card-header"></div>
+                <ul class="product-list">
+                    <li>2x Barras de aço</li>
+                    <li>40x Parafusos</li>
+                    <li>10x Porcas M10</li>
+                    <li>5x Cantoneiras</li>
+                    <li>1x Lata de tinta spray</li>
+                </ul>
+                <button class="delete-card-btn" data-action="delete-card" title="Excluir conjunto">
+                    <img src="/pictures/trash.png" alt="Excluir">
+                </button>
+            </div>
+        </div>
+
+        <div class="add-dialog-overlay" id="add-dialog-overlay">
+            <div class="add-dialog">
+                <div class="add-dialog-header">Digite a nova ordem de produção</div>
+                <textarea class="add-dialog-textarea" placeholder="Detalhes da ordem (Shift+Enter para nova linha)"></textarea>
+                <div class="add-dialog-buttons">
+                    <button class="confirm-add">Adicionar</button>
+                    <button class="cancel-add">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="password-dialog-overlay" id="password-dialog-overlay">
+            <div class="password-dialog">
+                <h2 class="password-dialog-title">Senha de Administrador</h2>
+                <p class="password-dialog-message">Para prosseguir, digite a senha de administrador:</p>
+                <input type="password" class="password-dialog-input" placeholder="Senha" id="admin-password">
+                <div class="password-dialog-buttons">
+                    <button class="password-dialog-button confirm" id="confirm-password-btn">Confirmar</button>
+                    <button class="password-dialog-button cancel" id="cancel-password-btn">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <button class="add-card-btn" id="add-card-btn">
+        <span class="plus-icon">+</span>
+    </button>
+
+    <script src="orderJS.js"></script>
+
+</body>
+</html>
