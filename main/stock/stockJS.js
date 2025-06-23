@@ -1,6 +1,7 @@
-// Meu código JS
 const addProductDialogOverlay = document.getElementById('add-product-dialog-overlay');
 const newProductNameInput = document.getElementById('new-product-name');
+const newProductSectorInput = document.getElementById('new-product-sector'); // Novo campo
+const newProductShelfInput = document.getElementById('new-product-shelf');   // Novo campo
 const productImageUpload = document.getElementById('product-image-upload');
 const imagePreview = document.getElementById('image-preview');
 const newProductQuantityInput = document.getElementById('new-product-quantity');
@@ -25,6 +26,8 @@ const ADMIN_PASSWORD = 'admin123'; // Senha de administrador
 function openAddProductDialog() {
     addProductDialogOverlay.style.display = 'flex';
     newProductNameInput.value = '';
+    newProductSectorInput.value = ''; 
+    newProductShelfInput.value = '';   
     productImageUpload.value = '';
     imagePreview.innerHTML = '<span>Pré-visualização da Imagem</span>';
     newProductQuantityInput.value = '0';
@@ -38,7 +41,7 @@ function closeAddProductDialog() {
 function openPasswordDialog(action, element = null) {
     pendingAction = action;
     pendingElement = element; // Armazena a referência para o elemento (ex: a linha do produto a ser deletada)
-    adminPasswordInput.value = ''; // Limpa o campo da senha
+    adminPasswordInput.value = ''; 
     passwordDialogOverlay.style.display = 'flex';
     adminPasswordInput.focus();
 }
@@ -50,7 +53,7 @@ function closePasswordDialog() {
 }
 
 // --- Função para enviar dados para o Node-RED ---
-function sendToNodeRED(productId, newQuantity) {
+function sendToNodeRED(productId, newQuantity, sector = '', shelf = '') {
     fetch('http://localhost:1880/api/update', {
         method: 'POST',
         headers: {
@@ -58,7 +61,9 @@ function sendToNodeRED(productId, newQuantity) {
         },
         body: JSON.stringify({
             nome: productId,
-            quantidade: newQuantity
+            quantidade: newQuantity,
+            setor: sector, // Envia o setor (teste)
+            prateleira: shelf // Envia a prateleira (teste)
         })
     }).then(res => res.json())
       .then(data => {
@@ -83,7 +88,12 @@ function handleQuantityChange(event) {
     const quantityValueSpan = productActions.querySelector('.quantity-value');
     const productRow = button.closest('.product-row');
     const productId = productRow.dataset.productId;
-    
+    // Captura o setor e a prateleira existentes (se houver, para enviar junto com a atualização de quantidade)
+    const currentSectorElement = productRow.querySelector('.product-subtitle');
+    const currentSectorText = currentSectorElement ? currentSectorElement.textContent : '';
+    // Você precisaria de uma lógica mais sofisticada para extrair setor e prateleira se eles não estiverem em campos separados.
+    // Por enquanto, vamos enviar o texto completo do subtitle como 'setor' para o Node-RED ou deixar vazio se não for um novo produto.
+
     const quantityToChange = parseInt(quantityInput.value);
 
     // Validação de input
@@ -99,12 +109,12 @@ function handleQuantityChange(event) {
     if (button.classList.contains('btn-add')) {
         newQuantity = currentQuantity + quantityToChange;
         quantityValueSpan.textContent = newQuantity;
-        sendToNodeRED(productId, newQuantity); // Envia para Node-RED
+        sendToNodeRED(productId, newQuantity, currentSectorText); // Envia para Node-RED (setor/prateleira como um único texto)
     } else if (button.classList.contains('btn-remove')) {
         if (currentQuantity - quantityToChange >= 0) {
             newQuantity = currentQuantity - quantityToChange;
             quantityValueSpan.textContent = newQuantity;
-            sendToNodeRED(productId, newQuantity); // Envia para Node-RED
+            sendToNodeRED(productId, newQuantity, currentSectorText); // Envia para Node-RED (setor/prateleira como um único texto)
         } else {
             alert('Não é possível remover mais itens do que o estoque atual.');
         }
@@ -175,6 +185,8 @@ productImageUpload.addEventListener('change', (event) => {
 
 confirmAddProductBtn.addEventListener('click', () => {
     const productName = newProductNameInput.value.trim();
+    const productSector = newProductSectorInput.value.trim(); // Captura o valor do novo campo Setor
+    const productShelf = newProductShelfInput.value.trim();   // Captura o valor do novo campo Prateleira
     const productImageFile = productImageUpload.files[0];
     const productQuantity = parseInt(newProductQuantityInput.value);
 
@@ -182,6 +194,7 @@ confirmAddProductBtn.addEventListener('click', () => {
         alert('Por favor, insira o nome do produto.');
         return;
     }
+    // Setor e Prateleira não são obrigatórios por padrão, mas você pode adicionar validação se precisar
     if (!productImageFile) {
         alert('Por favor, selecione uma imagem para o produto.');
         return;
@@ -194,6 +207,7 @@ confirmAddProductBtn.addEventListener('click', () => {
     // Adiciona o novo produto
     const imageUrl = URL.createObjectURL(productImageFile);
     const productId = productName.toLowerCase().replace(/\s+/g, '-');
+    const subtitleText = `${productSector ? productSector : 'N/A'} - ${productShelf ? productShelf : 'N/A'}`; // Formata o subtexto
 
     const newProductRow = document.createElement('div');
     newProductRow.classList.add('product-row');
@@ -203,7 +217,10 @@ confirmAddProductBtn.addEventListener('click', () => {
             <div class="product-icon">
                 <img src="${imageUrl}" alt="${productName}">
             </div>
-            <div class="product-name">${productName}</div>
+            <div>
+                <div class="product-name">${productName}</div>
+                <div class="product-subtitle">${subtitleText}</div>
+            </div>
         </div>
         <div class="product-actions">
             <input type="number" class="quantity-input" value="1" min="1">
@@ -223,7 +240,7 @@ confirmAddProductBtn.addEventListener('click', () => {
     closeAddProductDialog(); // Fecha o modal de adicionar produto após o sucesso
     alert('Novo produto adicionado com sucesso!'); // Exibe mensagem de sucesso
 
-    sendToNodeRED(productId, productQuantity); // Envia o novo produto para o Node-RED
+    sendToNodeRED(productId, productQuantity, productSector, productShelf); // Envia o novo produto e seus dados para o Node-RED
 });
 
 // --- Função para anexar event listeners a uma linha de produto ---

@@ -32,7 +32,10 @@
                 <div class="product-icon">
                     <img src="/pictures/martelo.png" alt="Martelo">
                 </div>
-                <div class="product-name">Martelo</div>
+                <div>
+                    <div class="product-name">Martelo</div>
+                    <div class="product-subtitle">Setor de Ferramentas - P 5</div>
+                </div>
             </div>
             <div class="product-actions">
                 <input type="number" class="quantity-input" value="1" min="1">
@@ -52,7 +55,10 @@
                 <div class="product-icon">
                     <img src="/pictures/prego.png" alt="Pregos">
                 </div>
-                <div class="product-name">Pregos</div>
+                <div>
+                    <div class="product-name">Pregos</div>
+                    <div class="product-subtitle">Setor de Construção - P 2</div>
+                </div>
             </div>
             <div class="product-actions">
                 <input type="number" class="quantity-input" value="1" min="1">
@@ -73,7 +79,10 @@
                 <div class="product-icon">
                     <img src="/pictures/porca.png" alt="Porcas">
                 </div>
-                <div class="product-name">Porcas</div>
+                <div>
+                    <div class="product-name">Porcas</div>
+                    <div class="product-subtitle">Setor de Fixadores - P 1</div>
+                </div>
             </div>
             <div class="product-actions">
                 <input type="number" class="quantity-input" value="1" min="1">
@@ -94,7 +103,10 @@
                 <div class="product-icon">
                     <img src="/pictures/cabecote.png" alt="Cabeçote de motor">
                 </div>
-                <div class="product-name">Cabeçote de motor</div>
+                <div>
+                    <div class="product-name">Cabeçote de motor</div>
+                    <div class="product-subtitle">Setor de Motores - P 3</div>
+                </div>
             </div>
             <div class="product-actions">
                 <input type="number" class="quantity-input" value="1" min="1">
@@ -115,7 +127,10 @@
                 <div class="product-icon">
                     <img src="/pictures/cano_metal.png" alt="Cano de metal">
                 </div>
-                <div class="product-name">Cano de metal</div>
+                <div>
+                    <div class="product-name">Cano de metal</div>
+                    <div class="product-subtitle">Setor de Tubulações - P 4</div>
+                </div>
             </div>
             <div class="product-actions">
                 <input type="number" class="quantity-input" value="1" min="1">
@@ -136,7 +151,10 @@
                 <div class="product-icon">
                     <img src="/pictures/cobre.png" alt="Fio de Cobre">
                 </div>
-                <div class="product-name">Fio de Cobre</div>
+                <div>
+                    <div class="product-name">Fio de Cobre</div>
+                    <div class="product-subtitle">Setor de Elétrica - P 6</div>
+                </div>
             </div>
             <div class="product-actions">
                 <input type="number" class="quantity-input" value="1" min="1">
@@ -157,6 +175,8 @@
         <div class="add-product-dialog">
             <h2>Adicionar Novo Produto</h2>
             <input type="text" id="new-product-name" placeholder="Nome do Produto">
+            <input type="text" id="new-product-sector" placeholder="Setor">
+            <input type="text" id="new-product-shelf" placeholder="Prateleira">
 
             <div class="file-input-wrapper">
                 <input type="file" id="product-image-upload" accept="image/*">
